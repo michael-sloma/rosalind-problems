@@ -21,8 +21,8 @@ mostFrequentKmer::Int->String->[String]
 mostFrequentKmer k text = mostFrequent (frequencies k text)
 
 prettify::[String]->String
-prettify = foldr myconcat []
-    where myconcat a b = a++" "++b
+prettify = foldr concatWithSpace []
+    where concatWithSpace a b = a++" "++b
 
 main::IO()
 main = do 

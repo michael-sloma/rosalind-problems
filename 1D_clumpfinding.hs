@@ -10,7 +10,7 @@ windows n text = filter (\x->length x == n) $ map (take n) $ (init . tails) text
 --from a string and a window size, compute frequency of each unique window
 frequencies::Int->String->FreqMap
 frequencies n s = foldr insert HM.empty (windows n s)
-    where insert x hm = (HM.insertWith (+) x 1 hm) 
+    where insert x = HM.insertWith (+) x 1
 
 --from a freqmap and a new overlapping window, generate the new freqmap
 updateFrequencies::(Int,String,FreqMap)->String->(Int,String,FreqMap)
@@ -41,5 +41,5 @@ main = do
     k <- getLine
     chunksize <- getLine
     repeats <- getLine
-    putStrLn $ concat . intersperse " " $ 
+    putStrLn $ unwords $ 
         clumpFinding (read chunksize) (read repeats) (read k) genome

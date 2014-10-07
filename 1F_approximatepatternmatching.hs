@@ -12,7 +12,7 @@ hamming a b = sum . map (\(x,y)->if x==y then 0 else 1) $ zip a b
 appPtrnMtch::Int->String->String->[Int]
 appPtrnMtch d gen pat = reverse . snd $ 
                             foldl' step (0,[]) $ windows (length pat) gen
-    where step (ind,acc) wndw = (ind+1,if (hamming pat wndw) <= d 
+    where step (ind,acc) wndw = (ind+1,if hamming pat wndw <= d 
                                         then ind:acc else acc)
 
 main::IO()

@@ -1,5 +1,5 @@
 reverseComplement::String->String
-reverseComplement = reverse . (map translate)
+reverseComplement = reverse . map translate
 
 translate::Char->Char
 translate 'A' = 'T'
